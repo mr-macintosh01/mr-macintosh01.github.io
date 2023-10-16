@@ -1,0 +1,45 @@
+#contacts-logo {
+    border-right: 4px solid white;
+}
+
+#contacts {
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.85) 10%, rgba(0,0,0,0.12377450980392157) 51%, rgba(0,0,0,0.85) 90%), url('../images/contacts-banner.svg');
+    background-size: cover, auto;
+    background-position: center, center;
+}
+
+#contacts-content {
+    margin-top: 15rem;
+    margin-bottom: 15rem;
+}
+
+#contacts a {
+    text-decoration: none;
+    color: white;
+}
+
+#contacts-logo {
+    order: 0;
+}
+
+#contacts-content div:has(h2) a {
+    filter: saturate(0);
+}
+
+#contacts-content div:has(h2) a:hover {
+    filter: saturate(1);
+}
+
+@media screen and (max-width: 800px) {    
+    #contacts-content {
+        flex-direction: column!important;
+    }
+
+    #contacts-logo {
+        border-right: 0px;
+        border-bottom: 4px solid white;
+        padding-right: 0!important;
+        padding-bottom: 0;
+        margin-right: 0!important;
+    }
+}

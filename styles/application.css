@@ -1,0 +1,158 @@
+#application input, select {
+    color: white;
+    border: none;
+    border-radius: 0.1875rem;
+    border-bottom: 2px solid white;
+    height: 40px;
+    background: #181818;
+}
+
+#application h1 span {
+    font-size: 2.5rem;
+}
+
+#application textarea {
+    color: white;
+    border: none;
+    border-radius: 0.1875rem;
+    border-bottom: 2px solid white;
+    resize: none;
+    background: #181818;
+}
+
+
+#application span {
+    font-size: 1.5rem;
+}
+
+#application .in {
+    background: black;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-top: -1rem;
+}
+
+#application button {
+    font-size: 1.5rem!important;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#application button {
+    transition: all 400ms cubic-bezier(.23, 1, 0.32, 1);
+}
+
+#application button:disabled {
+    pointer-events: none;
+}
+
+#application button:hover {
+    background-color: #dbdbdb;
+    transform: translateY(-2px);
+}
+
+#application button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+#application .form-send {
+    background: black;
+    padding: 2rem;
+}
+
+#application textarea::-webkit-scrollbar {
+    width: 0.3em;
+}
+
+#application textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+
+#application textarea::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 5px;
+
+}
+
+@media screen and (max-width: 1000px) {
+    #application {
+        margin: 1.5rem!important;
+        padding: 1rem!important;
+    }
+
+    #application .container .row {
+        flex-direction: column;
+    }
+
+    #application .container .row .col-4 {
+        width: 100%!important;
+        font-size: 1.5rem;
+        margin-bottom: 3rem!important;
+    }
+
+    #application .container .row .col-8 {
+        width: 100%!important;
+    }
+
+    #application .form-send {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%!important;
+        /* padding-left: 0!important;
+        padding-right: 0!important; */
+        padding: 0;
+        background: none;
+    }
+    
+    #application .form-send div {
+        width: 40%!important;
+        background: black;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+    }
+
+    #application .first-child {
+        margin-bottom: 0!important;
+    }
+
+    #application form div {
+        margin-left: 0!important; 
+    }
+
+    #application h1 span {
+        font-size: 2rem;
+    }
+
+    #application .input-text {
+        font-size: 1.2rem!important;
+    }
+
+    #application .text {
+        font-size: 1rem;
+    }
+    
+    #application ul {
+        border-left: 2px solid white;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #application .input-text {
+        font-size: 1rem!important;
+    }
+
+    #application button {
+        font-size: 1rem!important;
+        padding-top: 0.5rem!important;
+        padding-bottom: 0.5rem!important;
+        padding-right: 1rem!important;
+        padding-left: 1rem!important;
+    }
+}

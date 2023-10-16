@@ -1,0 +1,65 @@
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100.18%);
+    }
+}
+
+.logos {
+    margin-top: 5rem;
+    overflow: hidden;
+    padding: 0.7rem 0;
+    background: black;
+    white-space: nowrap;
+    position: relative;
+    border-width: 3px;
+    border-style: solid;
+    border-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 10%, rgb(255, 255, 255) 51%, rgba(255, 255, 255, 0.025) 90%) 1 0%;
+}
+
+.logos:before, .logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos:before {
+    left: 0;
+    background: linear-gradient(to right, rgb(0, 0, 0) 52%, rgba(0, 0, 0, 0.69) 75%, rgba(9,9,121,0) 100%);
+}
+
+.logos:after {
+    right: 0;
+    background: linear-gradient(to left, rgb(0, 0, 0) 52%, rgba(0, 0, 0, 0.69) 75%, rgba(9,9,121,0) 100%);
+}
+
+.logos:hover #logos-slide-0 #logos-slide-1 {
+    animation-play-state: paused;
+    background-color: green;
+}
+
+.logos-slide {
+    display: inline-block;
+}
+
+.logos-slide div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logos-slide img {
+    margin: 0 4rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .logos:before, .logos:after {
+        width: 150px;
+    }
+}
