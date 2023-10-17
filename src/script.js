@@ -1,14 +1,14 @@
 let initialWindowHeight = window.innerHeight
 let initialWindowWidth = window.innerWidth
 
-let shipsNumber = 15
+let shipsNumber = 10
 
 if (window.innerWidth <= 1300 && window.innerWidth > 1000) {
     shipsNumber = 10
 } else if (window.innerWidth <= 1000) {
     shipsNumber = 5
 } else {
-    shipsNumber = 15
+    shipsNumber = 10
 }
 
 const modes = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
