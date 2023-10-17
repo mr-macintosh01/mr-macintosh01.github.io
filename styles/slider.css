@@ -314,4 +314,17 @@
     .slider {
         font-size: 1rem!important;
     }
+
+    #products .wrap-2 {
+        padding: 0;
+    }
+
+    #products .wrap-2 div div div {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #products .info h2 {
+        font-size: 1.4rem!important;
+    }
 }
