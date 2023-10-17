@@ -34,13 +34,13 @@ button {
 }
 
 @keyframes moveForward {
-    0% { left: -20%; display: none }
-    100% {left: 120% }
+    0% { transform: translate(-10vh); display: none }
+    100% { transform: translate(210vh) } 
 }
 
 @keyframes moveBackward {
-    0% { left: 120%; display: none }
-    100% { left: -20% }
+    0% { transform: translate(210vh); display: none }
+    100% { transform: translate(-10vh) }
 }
 
 .main {
