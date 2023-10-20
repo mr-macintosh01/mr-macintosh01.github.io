@@ -1,95 +1,84 @@
-let initialWindowHeight = window.innerHeight
-let initialWindowWidth = window.innerWidth
-
-let shipsNumber = 10
-
-if (window.innerWidth <= 1300 && window.innerWidth > 1000) {
-    shipsNumber = 10
-} else if (window.innerWidth <= 1000) {
-    shipsNumber = 5
-} else {
-    shipsNumber = 10
-}
-
+let shipsNumber = 30
 const modes = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
 
-let starShip2 = document.getElementById('star-ship')
-let flame2 = document.getElementById('flame')
-
-startAnimation()
-
-function startAnimation() {
-    for (let i = 0; i < shipsNumber; i++) {
-        const [roadId, ship, velocity, side, delay, mode] = generateValues()
-        
-        const road = document.getElementById(roadId)
-    
-        const object = document.createElement('object')
-        object.addEventListener('animationend', event => shipOperatingSystem(event))
-    
-        object.setAttribute('data', `./images/Ship${ship}${(side === 'Backward' && 'Reverse') || ''}.svg`)
-        object.setAttribute('id', i)
-    
-        object.style.position = 'absolute'
-        object.style.animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
-    
-        if (window.innerHeight != initialWindowHeight || window.innerWidth != initialWindowWidth) {
-            return
-        }
-
-        road.appendChild(object)
-    }
+if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
+    shipsNumber = 15
+} else if (window.innerWidth < 1000) {
+    shipsNumber = 9
 }
+
+initializeShips()
+
+function initializeShips() {
+    for (let i = 0; i < 3; i++) {
+        const road = document.getElementById('road' + (i + 1))
+    
+        for (let j = 0; j < shipsNumber / 3; j++) {
+            const img = document.createElement('img')
+            const [ship, velocity, side, delay, mode] = generateValues()
+            const animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
+    
+            img.setAttribute('id', shipsNumber / 3 * i + j)
+    
+            if (side === 'Backward') {
+                img.classList.add(`Ship${ship}Reverse`)
+            } else {
+                img.classList.add(`Ship${ship}`)
+            }
+    
+            img.style.animation = animation
+    
+            img.addEventListener('animationend', (event) => shipOperatingSystem(event))
+    
+            road.appendChild(img)
+        }
+    }    
+}
+
 
 function shipOperatingSystem(event) {
-    const [roadId, ship, velocity, side, delay, mode] = generateValues()
-    
-    const prevObj = document.getElementById(event.target.id)
-    prevObj.remove()
+    const img = document.getElementById(event.target.id)
 
-    const object = document.createElement('object')
-    object.addEventListener('animationend', event => shipOperatingSystem(event))
+    img.className = ''
 
-    const road = document.getElementById(roadId)
-    
-    object.setAttribute('data', `./images/Ship${ship}${(side === 'Backward' && 'Reverse') || ''}.svg`)
-    object.setAttribute('id', event.target.id)
+    const [ship, velocity, side, delay, mode] = generateValues()
+    const animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
 
-    object.style.position = 'absolute'
-    object.style.animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
-
-    if (window.innerHeight != initialWindowHeight || window.innerWidth != initialWindowWidth) {
-        return
+    if (side === 'Backward') {
+        img.classList.add(`Ship${ship}Reverse`)
+    } else {
+        img.classList.add(`Ship${ship}`)
     }
-
-    road.appendChild(object)
+    
+    img.style.animation = 'none'
+    img.offsetHeight;
+    img.style.animation = animation
 }
- 
-function generateValues() {    
-    return [`road${Math.floor(Math.random() * 3 + 1)}`, Math.floor(Math.random() * 6), Math.random() * 6 + 5 + Math.random(), (Math.floor(Math.random() * 2) && 'Forward') || 'Backward', Math.random() * 3, modes[Math.floor(Math.random() * 5)]]
+
+function generateValues() {
+    const ship = Math.floor(Math.random() * 6)
+    const velocity = Math.random() * 3 + 5 + Math.random()
+    const side = (Math.floor(Math.random() * 2) && 'Forward') || 'Backward'
+    const delay = Math.random() * 3
+    const mode = modes[Math.floor(Math.random() * 5)]
+
+    return [ship, velocity, side, delay, mode]
 }
 
 window.addEventListener('resize', () => {
-    for (let i = 0; i < shipsNumber; i++) {
-        const object = document.getElementById(i)
-        
-        if (object) {
-            object.remove()
-        }
+    for(let i = 0; i < shipsNumber; i++) {
+        const ship = document.getElementById(i)
+
+        ship.remove()
     }
-
-    setTimeout(() => console.log('Timeout'), 150)
-
-    initialWindowHeight = window.innerHeight
-    initialWindowWidth = window.innerWidth
-
-    if (initialWindowWidth <= 1300 && initialWindowWidth > 1000) {
+    
+    if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
         shipsNumber = 15
-    } else if (initialWindowWidth <= 1000) {
-        shipsNumber = 5
+    } else if (window.innerWidth < 1000) {
+        shipsNumber = 9
     } else {
-        shipsNumber = 25
+        shipsNumber = 30
     }
 
-    startAnimation()
+    initializeShips()
 })
