@@ -289,6 +289,7 @@
     .attention {
         padding-top: 0.9rem!important;
         padding-bottom: 0.9rem!important;
+        width: 90%!important;
     }
 
     .attention div {
@@ -311,6 +312,10 @@
         margin-bottom: 1.5rem!important;
     }
 
+    #products .attention p {
+        font-size: 0.9rem!important;
+    }
+
     .slider {
         font-size: 1rem!important;
     }
@@ -320,11 +325,11 @@
     }
 
     #products .wrap-2 div div div {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 0.9rem;
+        margin-right: 0.9rem;
     }
 
     #products .info h2 {
-        font-size: 1.4rem!important;
+        font-size: 1.3rem!important;
     }
 }
