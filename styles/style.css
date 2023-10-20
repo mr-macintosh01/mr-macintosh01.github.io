@@ -29,18 +29,8 @@ button {
 }
 
 @keyframes rocketLaunch {
-    0% { bottom: 0% }
-    100% { bottom: 300% }
-}
-
-@keyframes moveForward {
-    0% { transform: translate(-10vh); display: none }
-    100% { transform: translate(210vh) } 
-}
-
-@keyframes moveBackward {
-    0% { transform: translate(210vh); display: none }
-    100% { transform: translate(-10vh) }
+    0% { transform: translateY(0px) }
+    100% { transform: translateY(-2000px) }
 }
 
 .main {
@@ -129,6 +119,10 @@ button {
     transform: scaleX(1);
 }
 
+#ship {
+    min-height: 600px;
+}
+
 #star-ship {
     background: black;
     z-index: 3;
@@ -149,6 +143,78 @@ button {
 
 #SlideButton:active {
     filter: none;
+}
+
+@keyframes moveForward {
+    0% {
+        transform: translateX(-20vw);
+        display: none;
+    }
+    100% { 
+        transform: translateX(110vw);
+    } 
+}
+
+@keyframes moveBackward {
+    0% {
+        transform: translateX(110vw);
+        display: none;
+    }
+    100% {
+        transform: translateX(-20vw);
+    }
+}
+
+#road1 img, #road2 img, #road3 img {
+    position: absolute;
+}
+
+.Ship0 {
+    content: url("../images/Ship0.svg");
+}
+
+.Ship1 {
+    content: url("../images/Ship1.svg");
+}
+
+.Ship2 {
+    content: url("../images/Ship2.svg");
+}
+
+.Ship3 {
+    content: url("../images/Ship3.svg");
+}
+
+.Ship4 {
+    content: url("../images/Ship4.svg");
+}
+
+.Ship5 {
+    content: url("../images/Ship5.svg");
+}
+
+.Ship0Reverse {
+    content: url("../images/Ship0Reverse.svg");
+}
+
+.Ship1Reverse {
+    content: url("../images/Ship1Reverse.svg");
+}
+
+.Ship2Reverse {
+    content: url("../images/Ship2Reverse.svg");
+}
+
+.Ship3Reverse {
+    content: url("../images/Ship3Reverse.svg");
+}
+
+.Ship4Reverse {
+    content: url("../images/Ship4Reverse.svg");
+}
+
+.Ship5Reverse {
+    content: url("../images/Ship5Reverse.svg");
 }
 
 #road1 {
@@ -284,93 +350,6 @@ button {
 .navigation input:checked ~ #menu {
     right: 0;
 }
-
-/* @keyframes logo {
-    0% {
-        height: 214px;
-    }
-    100% {
-        height: 60px;
-    }
-}
-
-@keyframes navigation {
-    0% {
-        bacground: rgba(0, 0, 0, 0);
-        padding-top: 3rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0);
-    }
-    100% {
-        background: rgba(0, 0, 0, 1);
-        padding-top: 1rem;
-        border-bottom: 1px solid rgb(255, 255, 255);
-    }
-}
-
-@keyframes logo-reverse {
-    100% {
-        height: 214px;
-    }
-    0% {
-        height: 60px;
-    }
-}
-
-@keyframes navigation-reverse {
-    100% {
-        bacground: rgba(0, 0, 0, 0);
-        padding-top: 3rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0);
-    }
-    0% {
-        background: rgba(0, 0, 0, 1);
-        padding-top: 1rem;
-        border-bottom: 1px solid rgb(255, 255, 255);
-    }
-}
-
-.nav-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 4;
-    animation: navigation 500ms ease-in-out 0s 1 forwards;
-    padding-bottom: 1rem;
-}
-
-.nav-wrap object {
-    animation: logo 500ms ease-in-out 0s 1 forwards;
-}
-
-.nav-wrap div:has(a) {
-    margin-top: 0!important;
-}
-
-.nav-wrap #menu a {
-    background: transparent;
-}
-
-.nav-wrap #menu {
-    align-items: center!important;
-}
-
-.reset-wrap {
-    position: relative;
-    z-index: 4;
-    animation: navigation-reverse 500ms ease-in-out 0s 1 forwards;
-}
-
-.reset-wrap object {
-    animation: logo-reverse 500ms ease-in-out 0s 1 forwards;
-    padding-bottom: 1rem;
-}
-
-.reset-wrap #menu a {
-    background: black;
-}
-
-.reset-wrap #menu {
-    align-items: normal!important;
-} */
 
 @media screen and (max-width: 1050px) {
     .hamburger, .toggle-menu {
@@ -528,7 +507,9 @@ button {
         width: 100%;
     }
 
-    
+    #about-us h1 span {
+        padding-top: 0.1rem!important; 
+    }
 }
 
 @media screen and (max-width: 700px) {
