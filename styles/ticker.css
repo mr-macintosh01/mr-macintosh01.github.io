@@ -3,7 +3,7 @@
         transform: translateX(0);
     }
     to {
-        transform: translateX(-120.18%);
+        transform: translateX(-100.18%);
     }
 }
 
@@ -64,4 +64,5 @@
     }
 
 }
+
 
