@@ -3,7 +3,7 @@
         transform: translateX(0);
     }
     to {
-        transform: translateX(-100.18%);
+        transform: translateX(-80.18%);
     }
 }
 
@@ -62,4 +62,5 @@
     .logos:before, .logos:after {
         width: 150px;
     }
+
 }
