@@ -44,7 +44,7 @@ down.addEventListener('click', () => {
 
         if (lastId == 4) {
             let newP = document.createElement('p')
-            newP.innerHTML = '(Расчет рентабельности для рестаранов и баров)'
+            newP.innerHTML = '(Расчет рентабельности для ресторанов и баров)'
             newP.style.marginTop = '0'
             
             element.appendChild(newP)
@@ -188,3 +188,4 @@ function removeAnimation(event) {
     animationStart = false
 
 }
+
