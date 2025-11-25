@@ -95,7 +95,7 @@ up.addEventListener('click', () => {
        
         if (firstId == 4) {
             let newP = document.createElement('p')
-            newP.innerHTML = '(Расчет рентабельности для рестаранов и баров)'
+            newP.innerHTML = '(Расчет рентабельности для ресторанов и баров)'
             newP.style.marginTop = '0'
 
             element.appendChild(newP)
@@ -186,4 +186,5 @@ function removeAnimation(event) {
     const elem = document.getElementById(event.target.id)
     elem.style.animation = ''
     animationStart = false
+
 }
