@@ -14,6 +14,7 @@ start.addEventListener('click', () => {
 
         starShip.style.background = 'none'
         starShip.style.visibility = 'visible'
+        starShip.classList.add('is-flying')
         starShip.style.animation = rocketAnimation  
 
         flame.style.visibility = 'visible'
@@ -46,6 +47,7 @@ reset.addEventListener('click', () => {
         const animation = 'rocketReset 5s ease'
 
         starShip.style.visibility = 'visible'
+        starShip.classList.remove('is-flying')
         starShip.style.animation = animation
 
         flame.style.visibility = 'hidden'
@@ -70,6 +72,7 @@ reset.addEventListener('click', () => {
 function showRocket() {
     if (launched) {
         starShip.style.visibility = 'hidden'
+        starShip.classList.remove('is-flying')
         flame.style.visibility = 'hidden'
         flame.style.animation = ''
     } else {
@@ -81,6 +84,7 @@ function showRocket() {
 window.addEventListener('resize', () => {
     if (window.innerWidth <= 1300) {
         starShip.style.animation = ''
+        starShip.classList.remove('is-flying')
         flame.style.animation = ''
         
         for (let i = 0; i < 3; i++) {

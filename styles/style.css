@@ -130,6 +130,10 @@ button {
     padding-bottom: 4rem;
 }
 
+#star-ship.is-flying {
+    z-index: 1100;
+}
+
 #star-ship object {
     z-index: 3;
 }
