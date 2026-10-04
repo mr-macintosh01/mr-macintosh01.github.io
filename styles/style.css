@@ -146,75 +146,17 @@ button {
 }
 
 @keyframes moveForward {
-    0% {
-        transform: translateX(-20vw);
-        display: none;
-    }
-    100% { 
-        transform: translateX(110vw);
-    } 
+    0% { -webkit-transform: translate3d(-20vw, 0, 0); transform: translate3d(-20vw, 0, 0); }
+    100% { -webkit-transform: translate3d(110vw, 0, 0); transform: translate3d(110vw, 0, 0); }
 }
 
 @keyframes moveBackward {
-    0% {
-        transform: translateX(110vw);
-        display: none;
-    }
-    100% {
-        transform: translateX(-20vw);
-    }
+    0% { -webkit-transform: translate3d(110vw, 0, 0); transform: translate3d(110vw, 0, 0); }
+    100% { -webkit-transform: translate3d(-20vw, 0, 0); transform: translate3d(-20vw, 0, 0); }
 }
 
 #road1 img, #road2 img, #road3 img {
     position: absolute;
-}
-
-.Ship0 {
-    content: url("../images/Ship0.svg");
-}
-
-.Ship1 {
-    content: url("../images/Ship1.svg");
-}
-
-.Ship2 {
-    content: url("../images/Ship2.svg");
-}
-
-.Ship3 {
-    content: url("../images/Ship3.svg");
-}
-
-.Ship4 {
-    content: url("../images/Ship4.svg");
-}
-
-.Ship5 {
-    content: url("../images/Ship5.svg");
-}
-
-.Ship0Reverse {
-    content: url("../images/Ship0Reverse.svg");
-}
-
-.Ship1Reverse {
-    content: url("../images/Ship1Reverse.svg");
-}
-
-.Ship2Reverse {
-    content: url("../images/Ship2Reverse.svg");
-}
-
-.Ship3Reverse {
-    content: url("../images/Ship3Reverse.svg");
-}
-
-.Ship4Reverse {
-    content: url("../images/Ship4Reverse.svg");
-}
-
-.Ship5Reverse {
-    content: url("../images/Ship5Reverse.svg");
 }
 
 #road1 {
@@ -277,6 +219,28 @@ button {
 
 #Nav {
     padding-top: 48px;
+}
+
+.logo-link {
+    display: block;
+    line-height: 0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo-link.is-inert {
+    cursor: default;
+    pointer-events: none;
+}
+
+#contacts a.phone-link {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contacts a.phone-link:hover {
+    text-decoration: underline;
 }
 
 .toggle-menu {
@@ -347,10 +311,6 @@ button {
     width: 30px;    
 }
 
-.navigation input:checked ~ #menu {
-    right: 0;
-}
-
 @media screen and (max-width: 1050px) {
     .hamburger, .toggle-menu {
         display: block;
@@ -386,6 +346,10 @@ button {
 
     .navigation input {
         z-index: 6;
+    }
+
+    .navigation input:checked ~ #menu {
+        right: 0;
     }
 
     #menu div {
@@ -540,5 +504,149 @@ button {
 
     #Logo {
         max-height: 130px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Ship0 {
+        width: 30px;
+    }
+
+    .Ship0Reverse {
+        width: 32px;
+    }
+
+    .Ship1 {
+        width: 32px;
+    }
+
+    .Ship1Reverse {
+        width: 30px;
+    }
+
+    .Ship2 {
+        width: 28px;
+    }
+
+    .Ship2Reverse {
+        width: 28px;
+    }
+
+    .Ship3 {
+        width: 50px;
+    }
+
+    .Ship3Reverse {
+        width: 50px;
+    }
+
+    .Ship4 {
+        width: 21px;
+    }
+
+    .Ship4Reverse {
+        width: 21px;
+    }
+
+    .Ship5 {
+        width: 35px;
+    }
+
+    .Ship5Reverse {
+        width: 35px;
+    }
+}
+
+@media screen and (min-width: 1051px) {
+    html {
+        scroll-padding-top: var(--nav-pad, 0px);
+    }
+
+    #nav-spacer {
+        width: 100%;
+        height: 0;
+        pointer-events: none;
+    }
+
+    #Nav.nav-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        width: auto;
+        max-height: 340px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transition: -webkit-transform 0.35s ease, max-height 0.45s ease, padding 0.45s ease;
+        transition: transform 0.35s ease, max-height 0.45s ease, padding 0.45s ease;
+    }
+
+    #Nav.nav-fixed.nav-away {
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+        pointer-events: none;
+    }
+
+    #Nav.nav-instant,
+    #Nav.nav-instant #Logo,
+    #Nav.nav-instant #menu,
+    #Nav.nav-instant .navigation {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+
+    #Nav.nav-fixed.nav-compact {
+        max-height: 100px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        align-items: center;
+        background-color: #000;
+    }
+
+    #Nav.nav-fixed #Logo {
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+        -webkit-transition: -webkit-transform 0.45s ease;
+        transition: transform 0.45s ease;
+    }
+
+    #Nav.nav-fixed.nav-compact > .col-auto:first-child {
+        height: 52px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #Nav.nav-fixed.nav-compact #Logo {
+        -webkit-transform: scale(0.6, 0.52);
+        transform: scale(0.6, 0.52);
+    }
+
+    #Nav.nav-fixed .navigation {
+        -webkit-transition: -webkit-transform 0.45s ease;
+        transition: transform 0.45s ease;
+    }
+
+    #Nav.nav-fixed #menu {
+        -webkit-transition: margin-top 0.45s ease;
+        transition: margin-top 0.45s ease;
+    }
+
+    #Nav.nav-fixed.nav-compact #menu {
+        margin-top: 0 !important;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1051px) and (prefers-reduced-motion: reduce) {
+    #Nav.nav-fixed,
+    #Nav.nav-fixed #Logo,
+    #Nav.nav-fixed #menu,
+    #Nav.nav-fixed .navigation {
+        -webkit-transition: none !important;
+        transition: none !important;
     }
 }

@@ -1,58 +1,85 @@
-let shipsNumber = 30
+let shipsNumber = 25
 const modes = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
 
+for (let preload = 0; preload < 6; preload++) {
+    const forward = new Image()
+    const reverse = new Image()
+    forward.decoding = 'async'
+    reverse.decoding = 'async'
+    forward.src = `./images/Ship${preload}.svg`
+    reverse.src = `./images/Ship${preload}Reverse.svg`
+}
+
 if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
-    shipsNumber = 15
+    shipsNumber = 20
 } else if (window.innerWidth < 1000) {
-    shipsNumber = 9
+    shipsNumber = 10
 }
 
 initializeShips()
 
+function shipSrc(ship, side) {
+    return `./images/Ship${ship}${side === 'Backward' ? 'Reverse' : ''}.svg`
+}
+
+function runShip(img) {
+    if (!img.parentNode) return
+
+    const [ship, velocity, side, delay, mode] = generateValues()
+    const src = shipSrc(ship, side)
+    const from = side === 'Backward' ? '110vw' : '-20vw'
+    const to = side === 'Backward' ? '-20vw' : '110vw'
+
+    img.className = side === 'Backward' ? `Ship${ship}Reverse` : `Ship${ship}`
+    if (img.getAttribute('src') !== src) img.src = src
+
+    if (img._shipAnim) img._shipAnim.cancel()
+
+    if (typeof img.animate === 'function') {
+        const anim = img.animate(
+            [
+                { transform: `translate3d(${from}, 0, 0)` },
+                { transform: `translate3d(${to}, 0, 0)` }
+            ],
+            {
+                duration: velocity * 1000,
+                delay: delay * 1000,
+                easing: mode,
+                fill: 'backwards'
+            }
+        )
+
+        img._shipAnim = anim
+        anim.onfinish = () => runShip(img)
+        return
+    }
+
+    if (!img._cssBound) {
+        img._cssBound = true
+        img.addEventListener('animationend', () => runShip(img))
+    }
+
+    img.style.animation = 'none'
+    requestAnimationFrame(() => {
+        if (!img.parentNode) return
+        img.style.animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
+    })
+}
+
 function initializeShips() {
     for (let i = 0; i < 3; i++) {
         const road = document.getElementById('road' + (i + 1))
-    
+
         for (let j = 0; j < shipsNumber / 3; j++) {
             const img = document.createElement('img')
-            const [ship, velocity, side, delay, mode] = generateValues()
-            const animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
-    
-            img.setAttribute('id', shipsNumber / 3 * i + j)
-    
-            if (side === 'Backward') {
-                img.classList.add(`Ship${ship}Reverse`)
-            } else {
-                img.classList.add(`Ship${ship}`)
-            }
-    
-            img.style.animation = animation
-    
-            img.addEventListener('animationend', (event) => shipOperatingSystem(event))
-    
+
+            img.id = String(shipsNumber / 3 * i + j)
+            img.alt = ''
+            img.decoding = 'async'
             road.appendChild(img)
+            runShip(img)
         }
-    }    
-}
-
-
-function shipOperatingSystem(event) {
-    const img = document.getElementById(event.target.id)
-
-    img.className = ''
-
-    const [ship, velocity, side, delay, mode] = generateValues()
-    const animation = `move${side} ${velocity}s ${mode} ${delay}s 1 backwards`
-
-    if (side === 'Backward') {
-        img.classList.add(`Ship${ship}Reverse`)
-    } else {
-        img.classList.add(`Ship${ship}`)
     }
-    
-    img.style.animation = 'none'
-    img.offsetHeight;
-    img.style.animation = animation
 }
 
 function generateValues() {
@@ -66,12 +93,13 @@ function generateValues() {
 }
 
 window.addEventListener('resize', () => {
-    for(let i = 0; i < shipsNumber; i++) {
+    for (let i = 0; i < shipsNumber; i++) {
         const ship = document.getElementById(i)
-
+        if (!ship) continue
+        if (ship._shipAnim) ship._shipAnim.cancel()
         ship.remove()
     }
-    
+
     if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
         shipsNumber = 15
     } else if (window.innerWidth < 1000) {
