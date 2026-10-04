@@ -16,7 +16,16 @@ if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
     shipsNumber = 10
 }
 
-initializeShips()
+let shipsStarted = false
+
+function beginShips() {
+    if (shipsStarted) return
+    shipsStarted = true
+    initializeShips()
+}
+
+if (!document.getElementById('loader')) beginShips()
+else window.addEventListener('loaderhidden', beginShips)
 
 function shipSrc(ship, side) {
     return `./images/Ship${ship}${side === 'Backward' ? 'Reverse' : ''}.svg`
@@ -76,6 +85,7 @@ function initializeShips() {
             img.id = String(shipsNumber / 3 * i + j)
             img.alt = ''
             img.decoding = 'async'
+            img.style.transform = 'translate3d(-20vw, 0, 0)'
             road.appendChild(img)
             runShip(img)
         }
@@ -108,5 +118,5 @@ window.addEventListener('resize', () => {
         shipsNumber = 30
     }
 
-    initializeShips()
+    if (shipsStarted) initializeShips()
 })

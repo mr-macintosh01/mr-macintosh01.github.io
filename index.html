@@ -173,6 +173,7 @@
             function removeLoader() {
                 document.documentElement.classList.remove('is-loading');
                 if (loader.parentNode) loader.parentNode.removeChild(loader);
+                window.dispatchEvent(new Event('loaderhidden'));
             }
 
             function finish() {
