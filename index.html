@@ -24,142 +24,8 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/113521812" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-    <style>
-        html.is-loading,
-        html.is-loading body {
-            overflow: hidden !important;
-        }
-
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10000;
-            height: 100%;
-            height: 100dvh;
-            display: -webkit-box;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            flex-direction: column;
-            -webkit-box-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            justify-content: center;
-            background: #000;
-            overflow: hidden;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-            -webkit-transition: -webkit-transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
-            transition: transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
-        }
-
-        #loader img {
-            width: 280px;
-            max-width: 78vw;
-            height: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-            #loader img {
-                width: 220px;
-                max-width: 68vw;
-            }
-        }
-
-        @media screen and (max-height: 520px) {
-            #loader img {
-                width: 180px;
-                max-width: 52vw;
-            }
-        }
-
-        #loader p {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 16vh;
-            margin: 0;
-            text-align: center;
-            color: #4e4e4e;
-            font-family: Ubuntu, sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            -webkit-animation: loaderTextColor 2.2s ease-in-out infinite;
-            animation: loaderTextColor 2.2s ease-in-out infinite;
-        }
-
-        #loader .loader-dots {
-            display: inline-block;
-            width: 1.5em;
-            text-align: left;
-        }
-
-        #loader .loader-dots span {
-            opacity: 0;
-            -webkit-animation: loaderDot 1.5s infinite;
-            animation: loaderDot 1.5s infinite;
-        }
-
-        #loader .loader-dots span:nth-child(2) {
-            -webkit-animation-delay: 0.25s;
-            animation-delay: 0.25s;
-        }
-
-        #loader .loader-dots span:nth-child(3) {
-            -webkit-animation-delay: 0.5s;
-            animation-delay: 0.5s;
-        }
-
-        @-webkit-keyframes loaderTextColor {
-            0%, 100% { color: #4e4e4e; }
-            50% { color: #d4d4d4; }
-        }
-
-        @keyframes loaderTextColor {
-            0%, 100% { color: #4e4e4e; }
-            50% { color: #d4d4d4; }
-        }
-
-        @-webkit-keyframes loaderDot {
-            0%, 20% { opacity: 0; }
-            35%, 100% { opacity: 1; }
-        }
-
-        @keyframes loaderDot {
-            0%, 20% { opacity: 0; }
-            35%, 100% { opacity: 1; }
-        }
-
-        #loader.is-done {
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-            pointer-events: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #loader {
-                -webkit-transition: none;
-                transition: none;
-            }
-
-            #loader p,
-            #loader .loader-dots span {
-                -webkit-animation: none;
-                animation: none;
-            }
-
-            #loader p {
-                color: #b5b5b5;
-            }
-
-            #loader .loader-dots span {
-                opacity: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/loader.css">
+    <noscript><style>html.is-loading, html.is-loading body { overflow: auto !important; } #loader { display: none; }</style></noscript>
     <link rel="preload" as="image" href="./images/Logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,7 +45,7 @@
     <script defer src="https://gcore.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
     <title>Заказать разработку бизнес-плана в Минске — Neuradeal</title>
-    <meta name="description" content="Закажите разработку бизнес-плана для банка, СЭЗ и инвесторов в Минске и по всей Беларуси. 25 лет опыта, больше 450 проектов, срок от 5 дней, цена от 1000 Br.">
+    <meta name="description" content="Закажите разработку бизнес-плана для банка, СЭЗ и инвесторов в Минске и по всей Беларуси. 25 лет опыта, больше 450 проектов, срок от 3 дней, цена от 1000 Br.">
     <link rel="canonical" href="https://neuradeal.com/">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
@@ -187,17 +53,24 @@
     <meta property="og:site_name" content="Neuradeal">
     <meta property="og:url" content="https://neuradeal.com/">
     <meta property="og:title" content="Заказать разработку бизнес-плана в Минске — Neuradeal">
-    <meta property="og:description" content="Закажите разработку бизнес-плана для банка, СЭЗ и инвесторов в Минске и по всей Беларуси. 25 лет опыта, больше 450 проектов, срок от 5 дней, цена от 1000 Br.">
-    <meta property="og:image" content="https://neuradeal.com/favicon.png">
+    <meta property="og:description" content="Закажите разработку бизнес-плана для банка, СЭЗ и инвесторов в Минске и по всей Беларуси. 25 лет опыта, больше 450 проектов, срок от 3 дней, цена от 1000 Br.">
+    <meta property="og:image" content="https://neuradeal.com/images/og/home.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Neuradeal — разработка бизнес-планов на заказ в Минске и по всей Беларуси">
+    <meta name="twitter:card" content="summary_large_image">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
+        "@id": "https://neuradeal.com/#organization",
         "name": "Neuradeal",
         "url": "https://neuradeal.com/",
         "telephone": "+375297571130",
-        "image": "https://neuradeal.com/favicon.png",
-        "description": "Разработка бизнес-планов на заказ в Минске и по всей Беларуси для банков, инвесторов, свободных экономических зон и Индустриального парка «Великий камень». 25 лет опыта, больше 450 проектов, срок от 5 дней, цена от 1000 Br.",
+        "image": "https://neuradeal.com/images/og/home.png",
+        "logo": "https://neuradeal.com/favicon.png",
+        "description": "Разработка бизнес-планов на заказ в Минске и по всей Беларуси для банков, инвесторов, свободных экономических зон и Индустриального парка «Великий камень». 25 лет опыта, больше 450 проектов, срок от 3 дней, цена от 1000 Br.",
         "areaServed": "BY",
         "inLanguage": "ru",
         "sameAs": [
@@ -212,43 +85,7 @@
         <img src="./images/Logo.svg" alt="">
         <p>Загрузка<span class="loader-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></p>
     </div>
-    <script>
-        (function () {
-            var loader = document.getElementById('loader');
-            if (!loader) return;
-            var gone = false;
-
-            function removeLoader() {
-                document.documentElement.classList.remove('is-loading');
-                if (loader.parentNode) loader.parentNode.removeChild(loader);
-                window.dispatchEvent(new Event('loaderhidden'));
-            }
-
-            function finish() {
-                if (gone) return;
-                gone = true;
-                var reduce = false;
-                try {
-                    reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                } catch (err) {
-                    reduce = false;
-                }
-                if (reduce) {
-                    removeLoader();
-                    return;
-                }
-                loader.classList.add('is-done');
-                loader.addEventListener('transitionend', function (event) {
-                    if (event.target === loader) removeLoader();
-                });
-                setTimeout(removeLoader, 1100);
-            }
-
-            if (document.readyState === 'complete') finish();
-            else window.addEventListener('load', finish);
-            setTimeout(finish, 12000);
-        })();
-    </script>
+    <script src="./src/loader.js"></script>
     <div class="main" id="top">
         <div class="row m-0 justify-content-between" id="Nav">
             <div class="d-flex col-auto justify-content-start">
@@ -331,7 +168,7 @@
                 </h1>
                 <p class="text mt-5">
                     <span class="highlight pb-3 pe-3">
-                        Мы независимая группа специалистов. Разрабатываем бизнес-планы на заказ для банков, инвесторов, свободных экономических зон Беларуси (СЭЗ)  и Индустриального парка «Великий камень». Работаем в Минске и по всей Беларуси, срок от 5 дней, цена от 1000 Br.
+                        Мы независимая группа специалистов. Разрабатываем бизнес-планы на заказ для банков, инвесторов, свободных экономических зон Беларуси (СЭЗ) и Индустриального парка «Великий камень». Работаем в Минске и по всей Беларуси, срок от 3 дней, цена от 1000 Br.
                     </span>
                 </p>
                 <ul class="mt-4 pt-4 pb-5 ps-0 ms-1">
@@ -341,7 +178,7 @@
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
-                                Наша команда - это эксперты, которые владеют современными знаниями, тонкой интуицией, высокой динамичностью, креативностью и профессионализмом. Имеем многолетний опыт в области экономического консалтинга и бизнес-планирования.
+                                Наша команда — это эксперты, которые владеют современными знаниями, тонкой интуицией, высокой динамичностью, креативностью и профессионализмом. Имеем многолетний опыт в области экономического консалтинга и бизнес-планирования.
                             </span>
                         </div>
                     </li>
@@ -414,7 +251,7 @@
                         </h2>
                         <div class="mt-5 ms-3 text">
                             <span class="highlight pb-2 pt-2">
-                                Среди наших разработок Бизнес - планы: ориентированые на малый и средний бизнес, для банков и Свободных экономических зон Беларуси (СЭЗ), Индустриального парка «Великий камень», а также Бизнес - планы для начинающих бизнесов.
+                                Среди наших разработок — бизнес-планы, ориентированные на малый и средний бизнес, для банков и свободных экономических зон Беларуси (СЭЗ), Индустриального парка «Великий камень», а также бизнес-планы для начинающих бизнесов.
                             </span>
                         </div>
                         
@@ -430,20 +267,29 @@
                         <div class="mt-2">
                             <div class="d-flex align-items-center ms-5 p-0" id="con">
                                 <div class="slider" id="slider">
-                                    <div class="element selected" id="Slider1" tabindex="0">
-                                        <p>
-                                            Бизнес-план для СЭЗ
-                                        </p>
-                                    </div>
-                                    <div class="element" id="Slider2" tabindex="0">
-                                        <p>
-                                            Инвестиционный Бизнес-план
-                                        </p>
-                                    </div>
-                                    <div class="element" id="Slider3" tabindex="0">
-                                        <p>
-                                            Бизнес-план для получения кредита
-                                        </p>
+                                    <div class="slider-track" id="slider-track">
+                                        <div class="element selected" id="Slider1" tabindex="0">
+                                            <p><span class="text-nowrap">Бизнес-план</span> для СЭЗ</p>
+                                        </div>
+                                        <div class="element" id="Slider2" tabindex="0">
+                                            <p>Инвестиционный <span class="text-nowrap">бизнес-план</span></p>
+                                        </div>
+                                        <div class="element" id="Slider3" tabindex="0">
+                                            <p><span class="text-nowrap">Бизнес-план</span> для получения кредита</p>
+                                        </div>
+                                        <div class="element is-out" id="Slider4" tabindex="-1" inert>
+                                            <p>Food Cost &amp; Beverage Cost</p>
+                                            <p class="element-note">Расчет рентабельности для ресторанов и баров</p>
+                                        </div>
+                                        <div class="element is-out" id="Slider5" tabindex="-1" inert>
+                                            <p>Разработка финансово-экономической модели</p>
+                                        </div>
+                                        <div class="element is-out" id="Slider6" tabindex="-1" inert>
+                                            <p>Актуализация <span class="text-nowrap">бизнес-планов</span></p>
+                                        </div>
+                                        <div class="element is-out" id="Slider7" tabindex="-1" inert>
+                                            <p><span class="text-nowrap">Бизнес-план</span> развития</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="control-panel-slider p-3 ms-4" id="control-panel-slider">
@@ -468,42 +314,30 @@
                 </div>
             </div>
             <div class="d-flex wrap-2 flex-column justify-content-end align-items-center">
-                <div class="d-flex justify-content-center pb-4 pt-4" style="background: black;">
-                    <div class="d-flex info flex-column align-items-center">
-                        <div class="d-flex flex-column align-items-center">
-                            <h2 class="mb-4 mt-4 label">
-                                Информация о продуктах
-                            </h2>
-                            <div class="d-flex w-100 justify-content-between mt-5">
-                                <div class="">
-                                    <h4 class="mb-0">
-                                        Стоимость мин.
-                                    </h4>
-                                    <h2 class="mt-3" id="cost">
-                                        от 1000 Br
-                                    </h2>
-                                </div>
-                                <div class="">
-                                    <div class="d-flex align-items-center">
-                                        <object class="me-2" data="./images/Clock.svg"></object>
-                                        <h4 class="m-0">Время</h4>
-                                    </div>
-                                    <h2 class="mt-3" id="time">
-                                        5-10 д.
-                                    </h2>
-                                </div>
+                <div class="d-flex w-100 justify-content-center pb-5 pt-5">
+                    <div class="d-flex info flex-column">
+                        <p class="info-eyebrow">Выбранный продукт</p>
+                        <h2 class="info-title" id="info-title" aria-live="polite">Бизнес-план для СЭЗ</h2>
+                        <div class="info-facts">
+                            <div class="info-fact">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12.2V4a1 1 0 0 1 1-1h8.2a1 1 0 0 1 .7.3l8 8a1 1 0 0 1 0 1.4l-8.2 8.2a1 1 0 0 1-1.4 0l-8-8a1 1 0 0 1-.3-.7z"/><circle cx="7.8" cy="7.8" r="1.4"/></svg>
+                                <p>
+                                    <span class="info-fact-label">Стоимость</span>
+                                    <span class="info-fact-value" id="cost">от 1000 Br</span>
+                                </p>
                             </div>
-                        </div>
-                        <div class="d-flex attention justify-content-start">
-                            <div class="d-flex align-items-start">
-                                <object class="w-100" data="./images/symbol.svg"></object>
-                            </div>
-                            <div>
-                                <p class="mb-0">
-                                    Время и цена выполнения могут значительно варьироваться в зависимости от отрасли и требований, предъявляемых к Бизнес-плану.
+                            <div class="info-fact">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+                                <p>
+                                    <span class="info-fact-label">Срок</span>
+                                    <span class="info-fact-value" id="time">3–6 дней</span>
                                 </p>
                             </div>
                         </div>
+                        <a class="more-link" id="more-link" href="./biznes-plan-dlya-sez/">
+                            <span>Узнать больше</span>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -544,7 +378,7 @@
                                 </div>
                                 <div>
                                     <span class="highlight pb-3 pt-2 text">
-                                        Вы можете cдетализировать свою заявку воспользовавшись специальным текстовым окном. Это поможет нам быстрее понять цели и задачи вашего проекта.
+                                        Вы можете сдетализировать свою заявку, воспользовавшись специальным текстовым окном. Это поможет нам быстрее понять цели и задачи вашего проекта.
                                     </span>
                                 </div>
                             </li>
@@ -568,26 +402,26 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Выбeрите вид продукта:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Выберите вид продукта:</span>
                                         <div class="in">
                                             <select name="Продукт" class="w-100 ps-2" id="dropdown">
                                                 <option>
                                                     Бизнес-план для СЭЗ
                                                 </option>
                                                 <option>
-                                                    Инвестиционный Бизнес-план
+                                                    Инвестиционный бизнес-план
                                                 </option>
                                                 <option>
                                                     Бизнес-план для получения кредита
                                                 </option>
                                                 <option>
-                                                    Food Cost & Baverage Cost
+                                                    Food Cost & Beverage Cost
                                                 </option>
                                                 <option> 
-                                                    Разработка Финансово-экономичесекой модели
+                                                    Разработка финансово-экономической модели
                                                 </option> 
                                                 <option>    
-                                                    Актуализация Бизнес-планов
+                                                    Актуализация бизнес-планов
                                                 </option>
                                                 <option>
                                                     Бизнес-план развития
@@ -638,7 +472,7 @@
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
-                                За 25 лет работы на рынке бизнес-планирования, нам посчастливилось сотрудничать со многими белорусскими и международными компаниями, лидерами в своей отрасли.  Большое количество проектов выполнено для свободных экономических зон Республики Беларусь. 
+                                За 25 лет работы на рынке бизнес-планирования нам посчастливилось сотрудничать со многими белорусскими и международными компаниями, лидерами в своей отрасли. Большое количество проектов выполнено для свободных экономических зон Республики Беларусь. 
                             </span>
                         </div>
                     </li>
@@ -648,7 +482,7 @@
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
-                                Это производственные проекты в различных отраслях, логистические проекты, проекты связанные с инновациями. Кроме того, отдельный большой пласт разработанных проектов составляет продовольственная розница. Работа с белорусским ритейлом позволила приобрести ценный опыт  разработки комплексных проектов. Среди заказчиков: <span class="clients-names">Алми</span>, <span class="clients-names">Zorka</span>, <span class="clients-names">Gromin</span>, <span class="clients-names">SEW Eurodrive</span>, <span class="clients-names">Crum Snack</span>, <span class="clients-names">Plitex</span>, <span class="clients-names">BELWOODDOORS</span>, <span class="clients-names">Шоколадово</span>, <span class="clients-names">Минсккабель</span>. 
+                                Это производственные проекты в различных отраслях, логистические проекты, проекты, связанные с инновациями. Кроме того, отдельный большой пласт разработанных проектов составляет продовольственная розница. Работа с белорусским ритейлом позволила приобрести ценный опыт разработки комплексных проектов. Среди заказчиков: <span class="clients-names">Алми</span>, <span class="clients-names">Zorka</span>, <span class="clients-names">Gromin</span>, <span class="clients-names">SEW Eurodrive</span>, <span class="clients-names">Crum Snack</span>, <span class="clients-names">Plitex</span>, <span class="clients-names">BELWOODDOORS</span>, <span class="clients-names">Шоколадово</span>, <span class="clients-names">Минсккабель</span>. 
                             </span>
                         </div>
                     </li>
@@ -758,7 +592,7 @@
                             <div class="me-3">
                                 <img class="w-100" src="./images/linkdin.svg" alt="">
                             </div>
-                            <h2>Linkdin</h2>
+                            <h2>LinkedIn</h2>
                         </a>
                     </div>
                 </div>
@@ -774,6 +608,7 @@
     <script src="./src/ticker.js"></script>
     <script src="./src/scrollControl.js"></script>
     <script src="./src/contactGoals.js"></script>
+    <script src="./src/localLinks.js"></script>
 </body>
 </html>
 

@@ -1,5 +1,5 @@
-let shipsNumber = 25
 const modes = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
+const roads = [1, 2, 3].map(i => document.getElementById('road' + i))
 
 for (let preload = 0; preload < 6; preload++) {
     const forward = new Image()
@@ -10,18 +10,20 @@ for (let preload = 0; preload < 6; preload++) {
     reverse.src = `./images/Ship${preload}Reverse.svg`
 }
 
-if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
-    shipsNumber = 20
-} else if (window.innerWidth < 1000) {
-    shipsNumber = 10
-}
-
 let shipsStarted = false
+let shipsVisible = true
+
+function shipsPerRoad() {
+    const width = window.innerWidth
+    if (width > 1300) return 9
+    if (width >= 1000) return 7
+    return 4
+}
 
 function beginShips() {
     if (shipsStarted) return
     shipsStarted = true
-    initializeShips()
+    syncShips()
 }
 
 if (!document.getElementById('loader')) beginShips()
@@ -60,6 +62,7 @@ function runShip(img) {
 
         img._shipAnim = anim
         anim.onfinish = () => runShip(img)
+        if (!shipsVisible) anim.pause()
         return
     }
 
@@ -75,21 +78,46 @@ function runShip(img) {
     })
 }
 
-function initializeShips() {
-    for (let i = 0; i < 3; i++) {
-        const road = document.getElementById('road' + (i + 1))
+function syncShips() {
+    const perRoad = shipsPerRoad()
 
-        for (let j = 0; j < shipsNumber / 3; j++) {
+    roads.forEach(road => {
+        const ships = road.getElementsByTagName('img')
+
+        while (ships.length > perRoad) {
+            const ship = ships[ships.length - 1]
+            if (ship._shipAnim) ship._shipAnim.cancel()
+            ship.remove()
+        }
+
+        while (ships.length < perRoad) {
             const img = document.createElement('img')
-
-            img.id = String(shipsNumber / 3 * i + j)
             img.alt = ''
             img.decoding = 'async'
             img.style.transform = 'translate3d(-20vw, 0, 0)'
             road.appendChild(img)
             runShip(img)
         }
-    }
+    })
+}
+
+function setShipsVisible(visible) {
+    if (visible === shipsVisible) return
+    shipsVisible = visible
+
+    roads.forEach(road => {
+        Array.from(road.getElementsByTagName('img')).forEach(ship => {
+            if (!ship._shipAnim) return
+            if (visible) ship._shipAnim.play()
+            else ship._shipAnim.pause()
+        })
+    })
+}
+
+if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+        setShipsVisible(entries[0].isIntersecting)
+    }).observe(roads[0].parentElement)
 }
 
 function generateValues() {
@@ -102,21 +130,11 @@ function generateValues() {
     return [ship, velocity, side, delay, mode]
 }
 
+let resizeTimer = 0
+
 window.addEventListener('resize', () => {
-    for (let i = 0; i < shipsNumber; i++) {
-        const ship = document.getElementById(i)
-        if (!ship) continue
-        if (ship._shipAnim) ship._shipAnim.cancel()
-        ship.remove()
-    }
-
-    if (window.innerWidth <= 1300 && window.innerWidth >= 1000) {
-        shipsNumber = 15
-    } else if (window.innerWidth < 1000) {
-        shipsNumber = 9
-    } else {
-        shipsNumber = 30
-    }
-
-    if (shipsStarted) initializeShips()
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(() => {
+        if (shipsStarted) syncShips()
+    }, 200)
 })

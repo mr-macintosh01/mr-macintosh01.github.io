@@ -1,191 +1,115 @@
 const list = {
     '1': 'Бизнес-план для СЭЗ',
-    '2': 'Инвестиционный Бизнес-план',
+    '2': 'Инвестиционный бизнес-план',
     '3': 'Бизнес-план для получения кредита',
-    '4': 'Food Cost & Baverage Cost',
-    '5': 'Разработка Финансово-экономичесекой модели',
-    '6': 'Актуализация Бизнес-планов',
+    '4': 'Food Cost & Beverage Cost',
+    '5': 'Разработка финансово-экономической модели',
+    '6': 'Актуализация бизнес-планов',
     '7': 'Бизнес-план развития'
 }
 
-const slider = document.getElementById('slider')
-const con = document.getElementById('con')
+const pages = {
+    '1': 'biznes-plan-dlya-sez',
+    '2': 'investicionnyj-biznes-plan',
+    '3': 'biznes-plan-dlya-kredita',
+    '4': 'food-cost-beverage-cost',
+    '5': 'finansovo-ekonomicheskaya-model',
+    '6': 'aktualizaciya-biznes-plana',
+    '7': 'biznes-plan-razvitiya'
+}
+
+const VISIBLE = 3
+
+const track = document.getElementById('slider-track')
+const items = Array.from(track.querySelectorAll('.element'))
+const moreLink = document.getElementById('more-link')
+const infoTitle = document.getElementById('info-title')
 const dropdown = document.getElementById('dropdown')
 const up = document.getElementById('up')
 const down = document.getElementById('down')
 
+const STORAGE_KEY = 'products-slider'
+
 let selectedId = 'Slider1'
-let firstId = 1
-let lastId = 3
-let animationStart = false
+let first = 0
 
-let initialElements = [document.getElementById('Slider1'), document.getElementById('Slider2'), document.getElementById('Slider3')]
+track.addEventListener('click', onClick)
 
-initialElements.forEach(item => item.addEventListener('click', event => onClick(event)))
+down.addEventListener('click', () => moveTo(first + 1))
+up.addEventListener('click', () => moveTo(first - 1))
 
-down.addEventListener('click', () => {
-    if (lastId < 7 && !animationStart) {
-        animationStart = true
-        lastId++;
-        
-        const element = document.createElement('div')
-        const p = document.createElement('p')
+restoreState()
 
+function moveTo(index) {
+    const next = Math.max(0, Math.min(items.length - VISIBLE, index))
+    if (next === first) return
 
-        element.classList.add('element')
-        element.setAttribute('id', 'Slider' + lastId)
-        element.setAttribute('tabindex', '0')
+    first = next
+    track.style.setProperty('--first', first)
 
-        element.style.display = 'none'
+    items.forEach((item, i) => {
+        const visible = i >= first && i < first + VISIBLE
+        item.classList.toggle('is-out', !visible)
+        item.inert = !visible
+        item.tabIndex = visible ? 0 : -1
+    })
 
-        p.innerHTML = list[lastId]
-
-        element.appendChild(p)
-
-        if (lastId == 4) {
-            let newP = document.createElement('p')
-            newP.innerHTML = '(Расчет рентабельности для ресторанов и баров)'
-            newP.style.marginTop = '0'
-            
-            element.appendChild(newP)
-        }
-
-        element.addEventListener('click', event => onClick(event))
-
-        slider.appendChild(element)
-
-        for (let i = firstId; i < lastId + 1; i++) {
-            const elem = document.getElementById('Slider' + i)
-
-            if (('Slider' + i) == selectedId) {
-                elem.classList.add('selected')
-            }
-
-            if (firstId == i) {
-                elem.style.animation = 'moveUp 300ms ease'
-                elem.addEventListener('animationend', event => removeElem(event))
-
-            } else if (lastId == i) {
-                elem.style.display = 'flex'
-                elem.style.animation = 'moveLast 300ms ease'
-                ++firstId;
-            } else {
-                elem.addEventListener('animationend', event => removeAnimation(event))
-                elem.style.animation = 'moveNext 300ms ease'
-            }
-        }
-    }
-})
-
-up.addEventListener('click', () => {
-    if (firstId > 1 && !animationStart) {
-        animationStart = true
-        firstId--;
-        const element = document.createElement('div')
-        const p = document.createElement('p')
-
-        element.classList.add('element')
-        element.setAttribute('id', 'Slider' + firstId)
-        element.setAttribute('tabindex', '0')
-        element.style.display = 'none'
-
-        p.innerHTML = list[firstId]
-       
-        element.appendChild(p)
-       
-        if (firstId == 4) {
-            let newP = document.createElement('p')
-            newP.innerHTML = '(Расчет рентабельности для ресторанов и баров)'
-            newP.style.marginTop = '0'
-
-            element.appendChild(newP)
-        }
-
-        element.addEventListener('click', event => onClick(event))
-
-        slider.prepend(element)
-
-        for (let i = lastId; i > firstId - 1; i--) {
-            const elem = document.getElementById('Slider' + i)
-
-            if ('Slider' + i === selectedId) {
-               elem.classList.add('selected')
-            }
-
-            if (lastId == i) {
-                elem.style.animation = 'moveDown 300ms ease'
-                elem.addEventListener('animationend', event => removeElem(event))
-            } else if (firstId == i) {
-                elem.style.display = 'flex'
-                elem.style.animation = 'moveFirst 300ms ease'
-                --lastId;
-            } else {
-                elem.addEventListener('animationend', event => removeAnimation(event))
-                elem.style.animation = 'moveNextDown 300ms ease'
-            }
-        }
-    }
-})
+    saveState()
+}
 
 function onClick(event) {
-    console.log(selectedId)
+    const element = event.target.closest('.element')
 
-    if (!event.target.id) {
-        const elementId = event.target.parentElement.id
+    if (!element || element.id === selectedId) return
 
-        const element = document.getElementById(elementId)
-
-        if (!element.classList[1]) {
-
-            element.classList.add('selected')
-
-            if (selectedId && document.getElementById(selectedId)) {
-                const prevElement = document.getElementById(selectedId)
-                prevElement.classList.remove('selected')
-            }
-            
-            dropdown.selectedIndex = +elementId[elementId.length - 1] - 1
-            
-            selectedId = elementId
-        } else {
-            element.classList.remove('selected')
-           
-            dropdown.selectedIndex = 0
-            selectedId = ''
-        }
-    } else {
-        const element = document.getElementById(event.target.id)
-        
-        if (!element.classList[1]) {
-            element.classList.add('selected')
-            
-            if (selectedId && document.getElementById(selectedId)) {
-                const prevElement = document.getElementById(selectedId)
-                prevElement.classList.remove('selected')
-            }
-            
-            dropdown.selectedIndex = +event.target.id[event.target.id.length - 1] - 1
-
-            selectedId = event.target.id
-
-        } else {
-            element.classList.remove('selected')
-            
-            dropdown.selectedIndex = 0
-            selectedId = ''
-        }
-    }
+    select(element)
+    showProduct(selectedId.replace('Slider', ''), true)
+    saveState()
 }
 
-function removeElem(event) {
-    const elem = document.getElementById(event.target.id)
-    elem.remove()
+function select(element) {
+    const prevElement = document.getElementById(selectedId)
+    if (prevElement) prevElement.classList.remove('selected')
+
+    element.classList.add('selected')
+    selectedId = element.id
 }
 
-function removeAnimation(event) {
-    const elem = document.getElementById(event.target.id)
-    elem.style.animation = ''
-    animationStart = false
+function showProduct(key, animate) {
+    dropdown.selectedIndex = +key - 1
+    moreLink.href = './' + pages[key] + '/'
 
+    infoTitle.textContent = list[key]
+    infoTitle.classList.remove('is-changing')
+    if (!animate) return
+    void infoTitle.offsetWidth
+    infoTitle.classList.add('is-changing')
 }
 
+function saveState() {
+    try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ selected: selectedId, first }))
+    } catch (err) {}
+}
+
+function restoreState() {
+    let state = null
+    try {
+        state = JSON.parse(sessionStorage.getItem(STORAGE_KEY))
+    } catch (err) {}
+    if (!state) return
+
+    const element = document.getElementById(state.selected)
+    if (!element || !items.includes(element)) return
+
+    track.style.transition = 'none'
+    items.forEach(item => { item.style.transition = 'none' })
+
+    moveTo(+state.first || 0)
+    select(element)
+    showProduct(selectedId.replace('Slider', ''), false)
+
+    void track.offsetWidth
+    track.style.transition = ''
+    items.forEach(item => { item.style.transition = '' })
+}
