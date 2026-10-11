@@ -118,6 +118,12 @@
 
     }
 
+    #application .form-send button {
+        padding-left: .5rem!important;
+        padding-right: .5rem!important;
+        white-space: nowrap;
+    }
+
     #application .first-child {
         margin-bottom: 0!important;
     }

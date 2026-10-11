@@ -527,6 +527,28 @@ button {
     #Logo {
         max-height: 130px;
     }
+
+    .main #about-us,
+    .main #products,
+    .main #application,
+    .main #clients {
+        margin-left: 0!important;
+        margin-right: 0!important;
+        padding-left: 1.25rem!important;
+        padding-right: 1.25rem!important;
+    }
+
+    .main #products,
+    .main #application,
+    .main #clients,
+    .main :is(#products, #application, #clients) :is(.row, .container) {
+        --bs-gutter-x: 0;
+    }
+
+    .main #list,
+    .main #products .text {
+        margin-left: 0!important;
+    }
 }
 
 @media screen and (max-width: 600px) {
