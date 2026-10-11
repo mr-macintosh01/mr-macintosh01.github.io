@@ -5,10 +5,20 @@
     var logoLink = document.getElementById('logo-home');
     var logoActive = false;
 
+    var menu = document.getElementById('menu');
+
     if (hamburger && body) {
         hamburger.addEventListener('change', function (event) {
             if (event.target.checked) body.classList.add('stop-scrolling');
             else body.classList.remove('stop-scrolling');
+        });
+    }
+
+    if (hamburger && body && menu) {
+        menu.addEventListener('click', function (event) {
+            if (!hamburger.checked || !event.target.closest || !event.target.closest('a[href]')) return;
+            hamburger.checked = false;
+            body.classList.remove('stop-scrolling');
         });
     }
 
