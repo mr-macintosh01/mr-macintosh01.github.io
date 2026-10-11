@@ -42,6 +42,9 @@ button {
 }
 
 .main {
+    position: relative;
+    overflow-x: hidden;
+    overflow-x: clip;
     min-height: 1000%;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.2) 60%, rgba(0, 0, 0, 0) 90%) calc(20*100%/100),
