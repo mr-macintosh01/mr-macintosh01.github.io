@@ -86,8 +86,31 @@
         setTimeout(removeLoader, 1100);
     }
 
-    document.addEventListener('DOMContentLoaded', jumpToHash);
+    function imageReady(img) {
+        if (img.complete) return img.decode ? img.decode().catch(function () {}) : Promise.resolve();
+        return new Promise(function (resolve) {
+            img.addEventListener('load', resolve);
+            img.addEventListener('error', resolve);
+        });
+    }
+
+    function finishWhenArtReady() {
+        jumpToHash();
+        if (!window.Promise) return;
+        var waits = Array.prototype.map.call(
+            document.querySelectorAll('#Nav img, #VectorTown img, #SlideButton img, #about-us img, .top img'),
+            imageReady
+        );
+        if (document.fonts && document.fonts.ready) {
+            void document.body.offsetHeight;
+            waits.push(document.fonts.ready.catch(function () {}));
+        }
+        Promise.all(waits).then(finish, finish);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', finishWhenArtReady);
+    else finishWhenArtReady();
     if (document.readyState === 'complete') finish();
     else window.addEventListener('load', finish);
-    setTimeout(finish, 12000);
+    setTimeout(finish, 6000);
 })();

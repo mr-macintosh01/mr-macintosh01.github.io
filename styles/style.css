@@ -60,6 +60,20 @@ button {
     background: black;
 }
 
+.art {
+    height: auto;
+    vertical-align: baseline;
+}
+
+#Logo,
+#contacts-logo img {
+    height: auto;
+}
+
+#Logo {
+    width: 329px!important;
+}
+
 .ellipse {
     margin-left: -0.4em; 
 }
@@ -151,7 +165,7 @@ button {
     z-index: 1100;
 }
 
-#star-ship object {
+#star-ship img {
     z-index: 3;
 }
 
@@ -458,6 +472,7 @@ button {
 
     #Logo {
         max-height: 170px;
+        width: calc(170px * 329 / 214)!important;
     }
 }
 
@@ -526,6 +541,7 @@ button {
 
     #Logo {
         max-height: 130px;
+        width: calc(130px * 329 / 214)!important;
     }
 
     .main #about-us,

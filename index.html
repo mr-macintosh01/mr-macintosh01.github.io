@@ -27,9 +27,8 @@
     <link rel="stylesheet" href="./styles/loader.css">
     <noscript><style>html.is-loading, html.is-loading body { overflow: auto !important; } #loader { display: none; }</style></noscript>
     <link rel="preload" as="image" href="./images/Logo.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preload" as="font" type="font/woff2" href="./fonts/ubuntu-400-cyrillic.woff2" crossorigin>
+    <link rel="stylesheet" href="./fonts/ubuntu.css">
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
     
@@ -40,9 +39,7 @@
     <link rel="stylesheet" href="./styles/ticker.css">
     <link rel="stylesheet" href="./styles/contacts.css">
 
-    <link href="https://gcore.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-    <script defer src="https://gcore.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./vendor/bootstrap/bootstrap.min.css">
 
     <title>Заказать разработку бизнес-плана в Минске — Neuradeal</title>
     <meta name="description" content="Закажите разработку бизнес-плана для банка, СЭЗ и инвесторов в Минске и по всей Беларуси. 25 лет опыта, больше 450 проектов, срок от 3 дней, цена от 1000 Br.">
@@ -91,12 +88,12 @@
             <div class="d-flex col-auto justify-content-start">
                 <div class="ps-4">
                     <a class="logo-link is-inert" id="logo-home" href="#top" aria-label="В начало страницы" aria-disabled="true" tabindex="-1">
-                        <img class="w-100" src="./images/Logo.svg" alt="Neuradeal" id="Logo">
+                        <img class="w-100" src="./images/Logo.svg" width="329" height="214" alt="Neuradeal" id="Logo">
                     </a>
                 </div>
             </div>
             <div class="d-flex col-auto me-5 navigation">
-                <input type="checkbox" class="toggle-menu" id="hamburger">
+                <input type="checkbox" class="toggle-menu" id="hamburger" aria-label="Меню" aria-controls="menu">
                 <div class="hamburger">
 
                 </div>
@@ -129,24 +126,24 @@
             <div id="VectorTown" class="p-0">
                 <div class="d-flex w-100 align-items-end justify-content-start" id="Shadow">
                     <div id="LeftTownShadow">
-                        <object class="w-100" data="./images/LeftTownShadow.svg"></object>
+                        <img class="w-100 art" src="./images/LeftTownShadow.svg" width="548" height="577" alt="">
                     </div>
                     <div id="MiddleTownShadow">
-                        <object class="w-100" data="./images/MiddleTownShadow.svg"></object>
+                        <img class="w-100 art" src="./images/MiddleTownShadow.svg" width="653" height="537" alt="">
                     </div>
                     <div id="RightTownShadow">
-                        <object class="w-100" data="./images/RightTownShadow.svg"></object>
+                        <img class="w-100 art" src="./images/RightTownShadow.svg" width="326" height="637" alt="">
                     </div>
                 </div>
                 <div class="d-flex w-100 align-items-end justify-content-start" id="Town">
                     <div id="LeftTown">
-                        <object class="w-100" data="./images/Left Town.svg"></object>
+                        <img class="w-100 art" src="./images/Left Town.svg" width="548" height="570" alt="">
                     </div>
                     <div id="MiddleTown">
-                        <object class="w-100" data="./images/Middle Town.svg"></object>
+                        <img class="w-100 art" src="./images/Middle Town.svg" width="652" height="520" alt="">
                     </div>
                     <div id="RightTown">
-                        <object class="w-100" data="./images/Right Town.svg"></object>
+                        <img class="w-100 art" src="./images/Right Town.svg" width="325" height="623" alt="">
                     </div>
                 </div>
             </div>
@@ -174,7 +171,7 @@
                 <ul class="mt-4 pt-4 pb-5 ps-0 ms-1">
                     <li class="d-flex align-items-center mb-5 mt-4">
                         <div class="me-4 ellipse">
-                            <object data="./images/Ellipse.svg"></object>
+                            <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
@@ -184,7 +181,7 @@
                     </li>
                     <li class="d-flex align-items-center mb-4">
                         <div class="me-4 ellipse">
-                            <object data="./images/Ellipse.svg"></object>
+                            <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
@@ -204,7 +201,7 @@
                     </button>
                 </div>
                 <div class="d-flex flex-column align-items-center ms-2 me-5 pt-3" id="star-ship">
-                    <object class="w-100 d-block" data="./images/SpaceShip.svg"></object>
+                    <img class="w-100 d-block art" src="./images/SpaceShip.svg" width="251" height="507" alt="">
                     <div style="visibility: hidden; margin-top: -40px" class="d-flex flex-column align-items-center" id="flame">
                         <div class="d-flex" id="flameRow1">
                             <div id="beem0"></div>
@@ -294,15 +291,15 @@
                                 </div>
                                 <div class="control-panel-slider p-3 ms-4" id="control-panel-slider">
                                     <div>
-                                        <button id="up" style="margin-bottom: 1rem">
-                                            <svg width="37" height="21" viewBox="0 0 37 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <button id="up" style="margin-bottom: 1rem" aria-label="Предыдущий продукт">
+                                            <svg aria-hidden="true" width="37" height="21" viewBox="0 0 37 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M2 19L18.5 3L35 19" stroke="black" stroke-width="4" stroke-linecap="round"/>
                                                 </svg>                                            
                                         </button>
                                     </div>
                                     <div>
-                                        <button id="down">
-                                            <svg width="37" height="21" viewBox="0 0 37 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <button id="down" aria-label="Следующий продукт">
+                                            <svg aria-hidden="true" width="37" height="21" viewBox="0 0 37 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M2 2L18.5 18L35 2" stroke="black" stroke-width="4" stroke-linecap="round"/>
                                                 </svg>
                                         </button>
@@ -354,7 +351,7 @@
                         <ul class="pt-5 pb-5">
                             <li class="d-flex align-items-center mb-5">
                                 <div class="me-4 ellipse2">
-                                    <object data="./images/Ellipse.svg"></object>
+                                    <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                                 </div>
                                 <div>
                                     <span class="highlight pb-3 pt-2 text">
@@ -364,7 +361,7 @@
                             </li>
                             <li class="d-flex align-items-center mb-5">
                                 <div class="me-4 ellipse2">
-                                    <object data="./images/Ellipse.svg"></object>
+                                    <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                                 </div>
                                 <div>
                                     <span class="highlight pb-3 pt-2 text">
@@ -374,7 +371,7 @@
                             </li>
                             <li class="d-flex align-items-center mb-3">
                                 <div class="me-4 ellipse2">
-                                    <object data="./images/Ellipse.svg"></object>
+                                    <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                                 </div>
                                 <div>
                                     <span class="highlight pb-3 pt-2 text">
@@ -390,21 +387,21 @@
                                 <input type="hidden" name="_next" value="https://neuradeal.com/thanks.html">
                                 <div class="col ms-5">
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Email:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text" id="email-label">Email:</span>
                                         <div class="in">
-                                            <input type="email" name="Email" class="w-100 ps-2 pe-2" placeholder="example@example.com" id="email" maxlength="50" required>
+                                            <input aria-labelledby="email-label" type="email" name="Email" class="w-100 ps-2 pe-2" placeholder="example@example.com" id="email" maxlength="50" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Имя:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text" id="name-label">Имя:</span>
                                         <div class="in">
-                                            <input type="text" name="Имя" class="w-100 ps-2 pe-2" placeholder="Алексей" id="name" maxlength="40">
+                                            <input aria-labelledby="name-label" type="text" name="Имя" class="w-100 ps-2 pe-2" placeholder="Алексей" id="name" maxlength="40">
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Выберите вид продукта:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text" id="product-label">Выберите вид продукта:</span>
                                         <div class="in">
-                                            <select name="Продукт" class="w-100 ps-2" id="dropdown">
+                                            <select aria-labelledby="product-label" name="Продукт" class="w-100 ps-2" id="dropdown">
                                                 <option>
                                                     Бизнес-план для СЭЗ
                                                 </option>
@@ -430,15 +427,15 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Телефон:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text" id="tel-label">Телефон:</span>
                                         <div class="in">
-                                            <input type="tel" name="Тел" class="w-100 ps-2 pe-2" placeholder="+375 (29) 32 27 568" id="tel" maxlength="20">
+                                            <input aria-labelledby="tel-label" type="tel" name="Тел" class="w-100 ps-2 pe-2" placeholder="+375 (29) 32 27 568" id="tel" maxlength="20">
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text">Сдетализируйте свою заявку:</span>
+                                        <span class="m-0 ms-2 highlight pb-2 pt-1 input-text" id="message-label">Сдетализируйте свою заявку:</span>
                                         <div class="in">
-                                            <textarea type="text" name="Сообщение" rows="4" cols="50" class="w-100 ps-2 pe-2" placeholder="Сообщение" id="message" maxlength="300"></textarea>
+                                            <textarea aria-labelledby="message-label" name="Сообщение" rows="4" cols="50" class="w-100 ps-2 pe-2" placeholder="Сообщение" id="message" maxlength="300"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -468,7 +465,7 @@
                 <ul class="pt-5 pb-5">
                     <li class="d-flex align-items-center mb-5">
                         <div class="me-4 ellipse2">
-                            <object data="./images/Ellipse.svg"></object>
+                            <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
@@ -478,7 +475,7 @@
                     </li>
                     <li class="d-flex align-items-center">
                         <div class="me-4 ellipse2">
-                            <object data="./images/Ellipse.svg"></object>
+                            <img class="art" src="./images/Ellipse.svg" width="16" height="26" alt="">
                         </div>
                         <div>
                             <span class="highlight pb-3 pt-2">
@@ -573,7 +570,7 @@
         <div class="row ps-5 pe-5" id="contacts">
             <div class="d-flex align-items-center justify-content-center" id="contacts-content">
                 <div class="pt-5 pb-5 pe-5 me-5" id="contacts-logo">
-                    <img class="w-100" src="./images/Logo.svg" alt="Neuradeal">
+                    <img class="w-100" src="./images/Logo.svg" width="329" height="214" alt="Neuradeal">
                 </div>
                 <div class="pt-5 pb-5">
                     <h2 class="mb-5">
@@ -618,7 +615,6 @@
     <script src="./src/script.js"></script>
     <script src="./src/starShip.js"></script>
     <script src="./src/slider.js"></script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="./src/resetForm.js"></script>
     <script src="./src/ticker.js"></script>
     <script src="./src/scrollControl.js"></script>
